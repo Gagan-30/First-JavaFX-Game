@@ -40,7 +40,6 @@ public class Game extends Application {
                     rocket.moveRight();
                     break;
                 case SPACE:
-                // not Implemented
                 default:
             }
         });
