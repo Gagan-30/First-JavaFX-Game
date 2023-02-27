@@ -1,5 +1,6 @@
 package Game;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
@@ -8,15 +9,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class Game extends Application 
-{
+public class Game extends Application {
 
     Rocket rocket;
     Baddie baddie;
 
     @Override
-    public void start(Stage primaryStage) 
-    {
+    public void start(Stage primaryStage) {
         Group g = new Group();
         Scene scene = new Scene(g, 800, 600);
 
@@ -30,8 +29,8 @@ public class Game extends Application
         g.getChildren().add(rocket.getImageView());
         g.getChildren().add(baddie.getImageView());
 
-        scene.setOnKeyPressed((KeyEvent event) -> 
-        {
+        scene.setOnKeyPressed((KeyEvent event)
+                -> {
             switch (event.getCode()) {
                 case LEFT:
                     rocket.moveLeft();
@@ -46,6 +45,13 @@ public class Game extends Application
             }
         });
 
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                baddie.move();
+            }
+        }.start();
+
         primaryStage.setTitle("Flyer");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -54,5 +60,5 @@ public class Game extends Application
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
