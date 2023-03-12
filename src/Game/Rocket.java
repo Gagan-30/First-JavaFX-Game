@@ -36,4 +36,9 @@ public class Rocket {
             ivRocket.setLayoutX(x);
         }
     }
+
+    public int getX() 
+    { 
+        return x;
+    }
 }
